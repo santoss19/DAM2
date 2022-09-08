@@ -1,0 +1,16 @@
+Sobrecarga = Capacidad de un lenguaje de nombrar con un mismo nombre
+diferentes variables o operaciones.
+
+Sobreescritura = Se refiere a la capacidad de poder reescribir un méto-
+do ignoradno el código que hubiera en la superclase.
+
+Polimorfismo = Es la propiedad por la que es posible enviar mensajes
+sintácticamente iguales a objetos de tipos distintos.
+
+Abstracción = Es la acción de aislar los componentes esenciales de un
+objeto de aquellos que no lo son.
+
+Encapsulación = Se denomina encapsulamiento, a la acción de ocultar el 
+estado de los datos de los miembros de un objeto, haciendo que únicam-
+ente estos puedan ser modificados mediante las operaciones definidas 
+para ello. 
