@@ -54,11 +54,12 @@ public class Herramientas {
         for(Producto producto : productos) {
             oos.writeObject(producto);
         }
+        productos.removeAll(productos);
         oos.close();
         fos.close();
     }
     
-    public void recuperarproductos() throws IOException{
+    public void recuperarproductos() throws IOException {
         
         Producto producto = null;
         
@@ -83,4 +84,9 @@ public class Herramientas {
             System.out.println(producto.toString());
         }
     }
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
+    
 }
