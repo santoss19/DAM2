@@ -7,8 +7,8 @@ git commit
 
 *Asignaturas dispoñibles :*
 
-- [DI](\DI)
-- [PMDM](\PMDM)
-- [AD](\ACD)
-- [PSP](\PSP)
-- [SXE](\SXE)
+- [DI](DI)
+- [PMDM](PMDM)
+- [AD](ACD)
+- [PSP](PSP)
+- [SXE](SXE)
