@@ -1,4 +1,4 @@
-#REPOSITORIO 2º DAM
+# REPOSITORIO 2º DAM
 **Aquí vou ir subindo todo o que vayamos facendo no curso. Sentidevos libres de coller o que queirades, apuntes, examenes, practicas,...**
 
 git commit
