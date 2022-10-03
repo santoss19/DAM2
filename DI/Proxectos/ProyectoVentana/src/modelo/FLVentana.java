@@ -53,7 +53,7 @@ public class FLVentana extends JFrame {
 
         bot1.setVisible(bol);
         bot1.setText("Comprobar");
-        bot1.addActionListener(new AccionBoton2());
+        bot1.addActionListener(new AccionBoton2(panel));
 
         bot2.setVisible(bol);
         bot2.setText("Salir");
