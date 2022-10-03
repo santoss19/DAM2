@@ -5,7 +5,6 @@ import javax.swing.JFrame;
 import controlador.AccionBoton1;
 import controlador.AccionBoton2;
 
-import java.awt.event.*;
 import javax.swing.*;
 
 public class FLVentana extends JFrame {
