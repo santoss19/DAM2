@@ -2,6 +2,7 @@ package modelo;
 
 import javax.swing.JFrame;
 
+import controlador.AccionBoton1;
 import controlador.AccionBoton2;
 
 import java.awt.event.*;
@@ -57,11 +58,7 @@ public class FLVentana extends JFrame {
 
         bot2.setVisible(bol);
         bot2.setText("Salir");
-        bot2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
-            }
-        });
+        bot2.addActionListener(new AccionBoton1(frame));
 
         
     }
