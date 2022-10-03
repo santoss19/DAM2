@@ -35,6 +35,7 @@ public class FLVentana extends JFrame {
         panel.add(bot2);
 
         text1.setSize(70, 70);
+        text1.getText().length();
         text1.setVisible(bol);
 
         text2.setSize(70, 70);
@@ -49,6 +50,7 @@ public class FLVentana extends JFrame {
         
 
         label.setVisible(bol);
+        label.setName("Etiqueta1");
         label.setText("LABEL DE PRUEBA");
 
         bot1.setVisible(bol);
