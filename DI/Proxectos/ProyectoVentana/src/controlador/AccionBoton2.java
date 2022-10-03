@@ -12,6 +12,7 @@ public class AccionBoton2 implements ActionListener {
 
     JPanel jp = null;
     List<String> textos = new ArrayList<>();
+    
 
     public AccionBoton2(JPanel jPanel) {
         this.jp = jPanel;
@@ -21,6 +22,7 @@ public class AccionBoton2 implements ActionListener {
         
         Component[] componentes = jp.getComponents();
         List<JTextField> componentesText = new ArrayList<>();
+
         int cuenta = 0;
         int ronda = 1;
 
@@ -32,24 +34,33 @@ public class AccionBoton2 implements ActionListener {
  
         for(JTextField texto : componentesText) {
             for(JTextField texto2 : componentesText) {
-                cuenta++;
-                texto.getText().equals(texto2.getText());
+                if(texto.getText().equals(texto2.getText())) {
+                    cuenta++;
+                }                
             }
+            
             if(cuenta > 2 && ronda == 1) {
-                textos.add("A tiene " + cuenta + " iguales a el.");
+                textos.add("A tiene " + cuenta-- + " iguales a el.");
             } else if(cuenta > 2 && ronda == 2) {
-                textos.add("B tiene " + cuenta + " iguales a el.");
+                textos.add("B tiene " + cuenta-- + " iguales a el.");
             } else if(cuenta > 2 && ronda == 3) {
-                textos.add("C tiene " + cuenta + " iguales a el.");
+                textos.add("C tiene " + cuenta-- + " iguales a el.");
             } else if(cuenta > 2 && ronda == 4) {
-                textos.add("D tiene " + cuenta + " iguales a el.");
+                textos.add("D tiene " + cuenta-- + " iguales a el.");
             }
             ronda ++;
             cuenta = 0;
+            
         }
 
-        for(String text : textos) {
-            System.out.println(text);
+        if(textos.size() > 0) {
+            for(String text : textos) {
+                System.out.println(text);
+            }
+        } else {
+            System.out.println("Non hay ningún texto repetido");
         }
+
+        textos.removeAll(textos);
     }
 }
