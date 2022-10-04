@@ -5,11 +5,13 @@ import java.awt.event.*;
 import java.util.List;
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class AccionBoton2 implements ActionListener {
 
+    String mensaje;
     JPanel jp = null;
     List<String> textos = new ArrayList<>();
     
@@ -21,6 +23,7 @@ public class AccionBoton2 implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         
         Component[] componentes = jp.getComponents();
+        JLabel label = null;
         List<JTextField> componentesText = new ArrayList<>();
 
         int cuenta = 0;
@@ -29,6 +32,8 @@ public class AccionBoton2 implements ActionListener {
         for(int i = 0; i < componentes.length ; i++) {
             if(componentes[i].getClass().getName().equals("javax.swing.JTextField")) {
                 componentesText.add((JTextField)componentes[i]);
+            } else if(componentes[i].getClass().getName().equals("javax.swing.JLabel")) {
+                label = (JLabel)componentes[i];
             }
         }
  
@@ -39,14 +44,14 @@ public class AccionBoton2 implements ActionListener {
                 }                
             }
             
-            if(cuenta > 2 && ronda == 1) {
-                textos.add("A tiene " + cuenta-- + " iguales a el.");
-            } else if(cuenta > 2 && ronda == 2) {
-                textos.add("B tiene " + cuenta-- + " iguales a el.");
-            } else if(cuenta > 2 && ronda == 3) {
-                textos.add("C tiene " + cuenta-- + " iguales a el.");
-            } else if(cuenta > 2 && ronda == 4) {
-                textos.add("D tiene " + cuenta-- + " iguales a el.");
+            if(cuenta >= 2 && ronda == 1) {
+                textos.add("A");
+            } else if(cuenta >= 2 && ronda == 2) {
+                textos.add("B");
+            } else if(cuenta >= 2 && ronda == 3) {
+                textos.add("C");
+            } else if(cuenta >= 2 && ronda == 4) {
+                textos.add("D");
             }
             ronda ++;
             cuenta = 0;
@@ -54,12 +59,15 @@ public class AccionBoton2 implements ActionListener {
         }
 
         if(textos.size() > 0) {
+            mensaje = "Teñen más de 2 repetidos : ";
             for(String text : textos) {
-                System.out.println(text);
+                mensaje += text + ",";
             }
         } else {
-            System.out.println("Non hay ningún texto repetido");
+            mensaje = "Non hay ningún texto repetido";
         }
+
+        label.setText(mensaje);
 
         textos.removeAll(textos);
     }
