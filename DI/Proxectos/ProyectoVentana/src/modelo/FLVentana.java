@@ -1,11 +1,8 @@
 package modelo;
 
 import javax.swing.JFrame;
-import javax.swing.plaf.DimensionUIResource;
-
 import controlador.AccionBoton1;
 import controlador.AccionBoton2;
-
 import javax.swing.*;
 
 public class FLVentana extends JFrame {
@@ -62,8 +59,5 @@ public class FLVentana extends JFrame {
         bot2.setVisible(bol);
         bot2.setText("Salir");
         bot2.addActionListener(new AccionBoton1(frame));
-
-        
     }
-
 }
