@@ -7,6 +7,13 @@ package producto;
 import java.io.IOException;
 import java.util.List;
 import serialización.Herramientas;
+import org.w3c.dom.DOMImplementation;
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
+import javax.xml.parsers.*;
+import javax.xml.transform.*;
+import javax.xml.transform.stream.*;
+import java.io.File;
 
 /**
  *
@@ -18,6 +25,7 @@ public class CrearXMLPedidos {
     int[] idPedido = {1,2,3,4,5};
     List<Pedido> listaPedidos;
     Herramientas herr;
+    Document doc = null;
     
     public CrearXMLPedidos() {}
     
@@ -28,11 +36,29 @@ public class CrearXMLPedidos {
         }
     }
     
-    public void gardaListaPedidos() {
-        
+    public void creaXML() {
+        try {
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newDefaultInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            DOMImplementation implementation = db.getDOMImplementation();
+            doc = implementation.createDocument(null, "pedidos", null);
+            doc.setXmlVersion("1.0");
+        } catch (ParserConfigurationException ex) {
+            System.err.println("¡Error!: Non se pudo parsear o documento XML.");
+        }
     }
     
-    public void lePedidos() {
+    public void lePedidos(String rutaArchivo) {
+        try {
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newDefaultInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            doc = db.parse(rutaArchivo);
+        } catch (IOException | ParserConfigurationException | SAXException ex) {
+            System.err.println("¡ERROR! : Non se pudo cargar o documento XML.");
+        }
+    }
+    
+    public void gardaListaPedidos() {
         
     }
     

@@ -1,5 +1,6 @@
 package modelo;
 
+import java.awt.BorderLayout;
 import java.awt.Container;
 
 import javax.swing.*;
@@ -7,7 +8,7 @@ import controlador.*;
 
 public class BLVentana extends JFrame {
     public static void main(String[] args) {
-        FLVentana frame = new FLVentana();
+        BLVentana frame = new BLVentana();
         JPanel panel = new JPanel();
         Container cp = frame.getContentPane();
         JTextField text1 = new JTextField(4);
@@ -23,15 +24,15 @@ public class BLVentana extends JFrame {
         frame.setTitle("ProyectoFLVentana");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(bol);
-        frame.setContentPane(panel);
+        frame.setContentPane(cp);
 
-        panel.add(text1);
-        panel.add(text2);
-        panel.add(text3);
-        panel.add(text4);
-        panel.add(label);
-        panel.add(bot1);
-        panel.add(bot2);
+        cp.add(text1, BorderLayout.NORTH);
+        cp.add(text2, BorderLayout.NORTH);
+        cp.add(text3, BorderLayout.NORTH);
+        cp.add(text4, BorderLayout.NORTH);
+        cp.add(label, BorderLayout.CENTER);
+        cp.add(bot1, BorderLayout.SOUTH);
+        cp.add(bot2, BorderLayout.SOUTH);
 
         text1.setSize(70, 80);
         text1.getText().length();

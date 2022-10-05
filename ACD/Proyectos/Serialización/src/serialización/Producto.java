@@ -10,7 +10,7 @@ import java.io.Serializable;
  *
  * @author dam218
  */
-public class Producto implements Serializable{
+public class Producto implements Serializable {
     
     private int idProducto;
     private String descripcion;
