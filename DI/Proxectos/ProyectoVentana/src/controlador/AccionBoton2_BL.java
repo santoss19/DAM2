@@ -35,6 +35,8 @@ public class AccionBoton2_BL implements ActionListener {
         int cuenta = 0;
         int ronda = 1;
 
+        // Recolle os objetos de todos os paneis 
+
         for(int i = 0; i < componentesN.length ; i++) {
             if(componentesN[i].getClass().getName().equals("javax.swing.JTextField")) {
                 componentesText.add((JTextField)componentesN[i]);
@@ -58,7 +60,11 @@ public class AccionBoton2_BL implements ActionListener {
                 label = (JLabel)componentesC[i];
             }
         }
- 
+        
+        //
+
+        // Traballo cos datos obtidos dos componentes dos paneis 
+
         for(JTextField texto : componentesText) {
             for(JTextField texto2 : componentesText) {
                 if(texto.getText().equals(texto2.getText())) {

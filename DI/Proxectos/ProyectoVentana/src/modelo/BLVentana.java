@@ -71,6 +71,5 @@ public class BLVentana extends JFrame {
         bot2.setVisible(bol);
         bot1.addActionListener(new AccionBoton1(this));
         bot2.addActionListener(new AccionBoton2_BL(panelN, panelS, panelC));
-
     }
 }

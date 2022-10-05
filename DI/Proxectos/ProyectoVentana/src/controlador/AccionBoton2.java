@@ -68,7 +68,6 @@ public class AccionBoton2 implements ActionListener {
         }
 
         label.setText(mensaje);
-
         textos.removeAll(textos);
     }
 }

@@ -13,6 +13,7 @@ public class AccionBoton1 implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+        System.out.println(e.getSource()); //Obtén de que botón ven a orde
         cp.setVisible(false);
     }
 }
