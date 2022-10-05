@@ -1,6 +1,9 @@
 package modelo;
 
 import javax.swing.JFrame;
+
+import controlador.*;
+
 import javax.swing.*;
 
 public class FLVentana extends JFrame {
@@ -54,5 +57,7 @@ public class FLVentana extends JFrame {
 
         bot1.setVisible(bol);
         bot2.setVisible(bol);
+        bot1.addActionListener(new AccionBoton1(this));
+        bot2.addActionListener(new AccionBoton2(panel));
     }
 }

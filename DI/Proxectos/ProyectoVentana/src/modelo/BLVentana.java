@@ -5,6 +5,8 @@ import java.awt.Container;
 
 import javax.swing.*;
 
+import controlador.*;
+
 public class BLVentana extends JFrame {
 
     public JPanel panelN = null;
@@ -67,6 +69,8 @@ public class BLVentana extends JFrame {
 
         bot1.setVisible(bol);
         bot2.setVisible(bol);
+        bot1.addActionListener(new AccionBoton1(this));
+        bot2.addActionListener(new AccionBoton2_BL(panelN, panelS, panelC));
 
     }
 }
