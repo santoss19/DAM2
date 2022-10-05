@@ -1,28 +1,28 @@
 package modelo;
 
 import javax.swing.JFrame;
-import controlador.AccionBoton1;
-import controlador.AccionBoton2;
 import javax.swing.*;
 
 public class FLVentana extends JFrame {
-    public static void main(String[] args) {
-        FLVentana frame = new FLVentana();
-        JPanel panel = new JPanel();
+    public JButton bot1 = null;
+    public JButton bot2 = null;
+    public JPanel panel = null;
+
+    public FLVentana() {
+        super("ProyectoFLVentana");
+        panel = new JPanel();
         JTextField text1 = new JTextField(4);
         JTextField text2 = new JTextField(4);
         JTextField text3 = new JTextField(4);
         JTextField text4 = new JTextField(4);
         JLabel label = new JLabel();
-        JButton bot1 = new JButton("Comprobar");
-        JButton bot2 = new JButton("Salir");
+        bot1 = new JButton("Salir");
+        bot2 = new JButton("Comprobar");
         boolean bol = true;
-
-        frame.setSize(250, 130);
-        frame.setTitle("ProyectoFLVentana");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(bol);
-        frame.setContentPane(panel);
+        setSize(250, 130);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(bol);
+        setContentPane(panel);
 
         panel.add(text1);
         panel.add(text2);
@@ -53,11 +53,6 @@ public class FLVentana extends JFrame {
         label.setText("PROGRAMA COMPROBA");
 
         bot1.setVisible(bol);
-        bot1.setText("Comprobar");
-        bot1.addActionListener(new AccionBoton2(panel));
-
         bot2.setVisible(bol);
-        bot2.setText("Salir");
-        bot2.addActionListener(new AccionBoton1(frame));
     }
 }
