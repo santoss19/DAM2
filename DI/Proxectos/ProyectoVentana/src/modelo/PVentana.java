@@ -9,8 +9,7 @@ public class PVentana {
 
     public void FLVentana() {
         FLVentana fl = new FLVentana();
-        fl.bot1.addActionListener(new AccionBoton1(fl));
-        fl.bot2.addActionListener(new AccionBoton2(fl.panel));
+        
     }
 
     public void BLVentana() {
