@@ -98,10 +98,4 @@ public class VentanaLetras extends JFrame {
 
     }
 
-    
-
-    
-
-
-
 }
