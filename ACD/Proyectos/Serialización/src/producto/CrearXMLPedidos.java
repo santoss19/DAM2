@@ -4,7 +4,6 @@
  */
 package producto;
 
-import com.thoughtworks.xstream.XStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,11 +11,19 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 import serialización.Herramientas;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 import javax.xml.parsers.*;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import serialización.Producto;
 
 /**
  *
@@ -29,10 +36,10 @@ public class CrearXMLPedidos {
     String[] nomCliente = {"Paquiño", "Luis", "Torres", "Queimado", "Calberto"};
     int[] idPedido = {1,2,3,4,5};
     List<Pedido> listaPedidos;
-    Herramientas herr;
+    Herramientas herr = new Herramientas();
     String ruta = "";
     Document doc = null;
-    File arch = new File("pedidos.bat");
+    File arch = new File("pedidos.dat");
     ObjectOutputStream oos = null;
     ObjectInputStream ois = null;
     FileInputStream fis = null;
@@ -48,14 +55,16 @@ public class CrearXMLPedidos {
         
         this.oos = new ObjectOutputStream(fos);
         this.ois = new ObjectInputStream(fis);
+        herr.generarProductos();
+        listaPedidos = new ArrayList<>();
     }
     
     /* PARTE SERIALIZACIÓN */
     
     public void xeraListaPedidos() {
-        herr.generarProductos();
-        for(int i = 0; i < nomCliente.length; i++) {
-            listaPedidos.add(new Pedido(idPedido[i], nomCliente[i], herr.getProductos()));
+        for(int i = 0; i < 5; i++) {
+            List<Producto> productos = herr.getProductos();
+            listaPedidos.add(new Pedido(idPedido[i], /*nomCliente[i]*/ "Test", productos));
         }
     }
     
@@ -100,7 +109,7 @@ public class CrearXMLPedidos {
     
     /* PARTE XML */
     
-    /*public void creaXML() {
+    public void creaXML() {
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newDefaultInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
@@ -122,15 +131,18 @@ public class CrearXMLPedidos {
         } catch (TransformerException ex) {
             System.err.println("ERROR: Transformer falló!");
         }
-    }*/
+    }
     
-    public void xeraXMLPedidos() {
+    /*
+        EN DISEÑO
+    
+        public void xeraXMLPedidos() {
         XStream xstream = new XStream();
         xstream.setMode(XStream.NO_REFERENCES);
         xstream.alias("pedidos", List.class);
         xstream.alias("pedido", Pedido.class);
         xstream.toXML(listaPedidos, fos);
-    }
+    }*/
     
     /* EJERCICIO 5 */
     
@@ -144,5 +156,10 @@ public class CrearXMLPedidos {
         }
     }
     
+    
+    public static void main(String[] args) throws IOException {
+        CrearXMLPedidos cxmlp = new  CrearXMLPedidos();
+        cxmlp.xeraListaPedidos();
+    }
     
 }
