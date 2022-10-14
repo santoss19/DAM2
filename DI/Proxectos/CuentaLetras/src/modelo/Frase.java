@@ -120,4 +120,9 @@ public class Frase {
         char[] vector = frase.toCharArray();
         for(int i = 0; i < vector.length; i++) System.out.print(vector[i] + " ");
     }
+
+    public void setFrase(String frase) {
+        this.frase = frase;
+    }
+
 }

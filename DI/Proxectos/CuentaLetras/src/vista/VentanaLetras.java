@@ -13,14 +13,14 @@ import javax.swing.JTextField;
 public class VentanaLetras extends JFrame {
 
     JPanel panel = new JPanel();
-    JButton bot = new JButton("Procesar Texto");
-    JTextField wText = new JTextField(13);
-    JLabel text1 = new JLabel("0");
-    JLabel text2 = new JLabel("0");
-    JLabel label1 = new JLabel("Introduce una frase:");
-    JLabel label2 = new JLabel("Numero de letras:");
-    JLabel label3 = new JLabel("Numero de palabras:");
     GridBagLayout gbl = new GridBagLayout();
+    public JButton bot = new JButton("Procesar Texto");
+    public JTextField wText = new JTextField(13);
+    public JLabel text1 = new JLabel("0");
+    public JLabel text2 = new JLabel("0");
+    public JLabel label1 = new JLabel("Introduce una frase:");
+    public JLabel label2 = new JLabel("Numero de letras:");
+    public JLabel label3 = new JLabel("Numero de palabras:");
 
     public VentanaLetras() {
 
