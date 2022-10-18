@@ -37,7 +37,7 @@ public class CrearXMLPedidos {
     int[] idPedido = {1,2,3,4,5};
     List<Pedido> listaPedidos;
     Herramientas herr = new Herramientas();
-    String ruta = "";
+    String ruta = "test.xml";
     Document doc = null;
     File arch = new File("pedidos.dat");
     ObjectOutputStream oos = null;
@@ -111,7 +111,7 @@ public class CrearXMLPedidos {
     
     public void creaXML() {
         try {
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newDefaultInstance();
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             DOMImplementation implementation = db.getDOMImplementation();
             doc = implementation.createDocument(null, "pedidos", null);
@@ -123,8 +123,8 @@ public class CrearXMLPedidos {
     
     public void transformerXML() {
         try {
-            File f = new File("testXML.xml");
-            Transformer transformer = TransformerFactory.newDefaultInstance().newTransformer();
+            File f = new File("test.xml");
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
             StreamResult result = new StreamResult(f);
             DOMSource source = new DOMSource(doc);
@@ -148,7 +148,7 @@ public class CrearXMLPedidos {
     
     public void lePedidosXML() {
         try {
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newDefaultInstance();
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             doc = db.parse(ruta);
         } catch (IOException | ParserConfigurationException | SAXException ex) {
@@ -156,10 +156,28 @@ public class CrearXMLPedidos {
         }
     }
     
+    public void prueba() {
+        try {
+            Document docTest = null;
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            DOMImplementation impl = db.getDOMImplementation();
+            doc=impl.createDocument(null, "pedidos", null);
+            TransformerFactory tf = TransformerFactory.newInstance();
+            Transformer t = tf.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File("test.xml"));
+        t.transform(source, result);
+        } catch(ParserConfigurationException | TransformerException ex) {
+            ex.printStackTrace();
+        }
+        
+    }
+    
     
     public static void main(String[] args) throws IOException {
         CrearXMLPedidos cxmlp = new  CrearXMLPedidos();
-        cxmlp.xeraListaPedidos();
+        cxmlp.prueba();
     }
     
 }
