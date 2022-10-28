@@ -1,0 +1,2 @@
+Error: no se ha encontrado o cargado la clase principal .MostrarNome
+Causado por: java.lang.ClassNotFoundException: /MostrarNome

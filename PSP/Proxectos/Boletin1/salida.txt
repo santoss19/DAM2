@@ -1,0 +1,19 @@
+public void borraElementosEtiqueta(String nomeEtiqueta, Document doc) {
+        NodeList nl = doc.getDocumentElement().getChildNodes();
+        for(int i = 0; i < nl.getLength(); i++) {
+            NodeList hs = nl.item(i).getChildNodes();
+            for(int j = 0; j < hs.getLength(); j++) {
+                if(hs.item(j).getNodeName().equals("nome")) {
+                    Node p = hs.item(j).getParentNode();
+                    NodeList phs = p.getChildNodes();
+                    for(int k = 0; k < phs.getLength(); k++) {
+                        if(phs.item(k).getNodeName().equals("nome")) {
+                            Node br = phs.item(k);
+                            p.removeChild(br);
+                        }
+                    }
+                }
+            }
+        }
+        DOMaXML("contactos.xml", doc);
+    }

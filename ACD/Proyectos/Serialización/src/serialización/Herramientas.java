@@ -13,6 +13,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import producto.CrearXMLPedidos;
 
 /**
  *
@@ -86,7 +87,16 @@ public class Herramientas {
     }
 
     public List<Producto> getProductos() {
-        return productos;
+        List<Producto> pdts = new ArrayList<>();
+        for(int i = 0; i < nums.length; i++){
+            pdts.add(new Producto(nums[i], noms[i], pre[i]));
+        }
+        return pdts;
+    }
+    
+    public static void main(String[] args) throws IOException {
+        Herramientas herr = new Herramientas();
+        System.out.println(herr.getProductos());
     }
     
 }

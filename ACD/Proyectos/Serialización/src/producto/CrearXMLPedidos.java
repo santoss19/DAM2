@@ -4,6 +4,7 @@
  */
 package producto;
 
+//import com.thoughtworks.xstream.XStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -11,6 +12,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 import serialización.Herramientas;
@@ -19,6 +21,7 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.*;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -39,7 +42,7 @@ public class CrearXMLPedidos {
     Herramientas herr = new Herramientas();
     String ruta = "test.xml";
     Document doc = null;
-    File arch = new File("pedidos.dat");
+    File arch = new File("pedidos.xml");
     ObjectOutputStream oos = null;
     ObjectInputStream ois = null;
     FileInputStream fis = null;
@@ -55,7 +58,6 @@ public class CrearXMLPedidos {
         
         this.oos = new ObjectOutputStream(fos);
         this.ois = new ObjectInputStream(fis);
-        herr.generarProductos();
         listaPedidos = new ArrayList<>();
     }
     
@@ -63,8 +65,7 @@ public class CrearXMLPedidos {
     
     public void xeraListaPedidos() {
         for(int i = 0; i < 5; i++) {
-            List<Producto> productos = herr.getProductos();
-            listaPedidos.add(new Pedido(idPedido[i], /*nomCliente[i]*/ "Test", productos));
+            listaPedidos.add(new Pedido(idPedido[i], /*nomCliente[i]*/ "Test", herr.getProductos()));
         }
     }
     
@@ -109,75 +110,124 @@ public class CrearXMLPedidos {
     
     /* PARTE XML */
     
-    public void creaXML() {
-        try {
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            DOMImplementation implementation = db.getDOMImplementation();
-            doc = implementation.createDocument(null, "pedidos", null);
-            doc.setXmlVersion("1.0");
-        } catch (ParserConfigurationException ex) {
-            System.err.println("¡Error!: Non se pudo parsear o documento XML.");
-        }
-    }
-    
-    public void transformerXML() {
-        try {
-            File f = new File("test.xml");
-            Transformer transformer = TransformerFactory.newInstance().newTransformer();
-            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-            StreamResult result = new StreamResult(f);
-            DOMSource source = new DOMSource(doc);
-        } catch (TransformerException ex) {
-            System.err.println("ERROR: Transformer falló!");
-        }
-    }
-    
-    /*
-        EN DISEÑO
-    
-        public void xeraXMLPedidos() {
-        XStream xstream = new XStream();
-        xstream.setMode(XStream.NO_REFERENCES);
-        xstream.alias("pedidos", List.class);
-        xstream.alias("pedido", Pedido.class);
-        xstream.toXML(listaPedidos, fos);
-    }*/
-    
-    /* EJERCICIO 5 */
-    
-    public void lePedidosXML() {
-        try {
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            doc = db.parse(ruta);
-        } catch (IOException | ParserConfigurationException | SAXException ex) {
-            System.err.println("¡ERROR! : Non se pudo cargar o documento XML.");
-        }
-    }
-    
-    public void prueba() {
+     public void crearXMLPedidos() {
         try {
             Document docTest = null;
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             DOMImplementation impl = db.getDOMImplementation();
-            doc=impl.createDocument(null, "pedidos", null);
+            doc = impl.createDocument(null, "pedidos", null);
+            
+            for(int i = 0; i < listaPedidos.size(); i++) {
+                Element pedido = doc.createElement("pedido");
+                doc.getDocumentElement().appendChild(pedido);
+                Element idPedido = doc.createElement("idPedido");
+                idPedido.setTextContent(listaPedidos.get(i).getIdPedido() + "");
+                pedido.appendChild(idPedido);
+                Element nomeCliente = doc.createElement("nomeCliente");
+                nomeCliente.setTextContent(listaPedidos.get(i).getNomeCliente());
+                pedido.appendChild(nomeCliente);
+                Element productos = doc.createElement("productos");
+                pedido.appendChild(productos);
+                for(int j = 0; j < listaPedidos.get(i).getProductos().size(); j++) {
+                    Producto pdt = listaPedidos.get(i).getProductos().get(j);
+                    Element producto = doc.createElement("producto");
+                    producto.setAttribute("numeroProducto", "" + j);
+                    productos.appendChild(producto);
+                    Element idProducto = doc.createElement("idProducto");
+                    idProducto.setTextContent(pdt.getIdProducto() + "");
+                    producto.appendChild(idProducto);
+                    Element descripcion = doc.createElement("descripcion");
+                    descripcion.setTextContent(pdt.getDescripcion());
+                    producto.appendChild(descripcion);
+                    Element prezo = doc.createElement("prezo");
+                    prezo.setTextContent(pdt.getPrezo() + "");
+                    producto.appendChild(prezo);
+                }
+            }
+            
             TransformerFactory tf = TransformerFactory.newInstance();
             Transformer t = tf.newTransformer();
             DOMSource source = new DOMSource(doc);
             StreamResult result = new StreamResult(new File("test.xml"));
-        t.transform(source, result);
+            t.transform(source, result);
         } catch(ParserConfigurationException | TransformerException ex) {
             ex.printStackTrace();
         }
         
     }
+     
+    public void lePedidosXML() throws IOException {
+        try {
+            Document docPedidos = null;
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            doc = db.parse(ruta);
+            mostraContidoFicheiro(doc);
+        } catch(ParserConfigurationException | SAXException ex) {
+            System.err.println("ERROR: " + ex);
+        }
+    }
+    
+    public void mostraContidoFicheiroNodo(Document doc) {
+        Element raiz = doc.getDocumentElement();
+        System.out.println("<" + raiz.getTagName() + ">");
+        if(doc.getDocumentElement().getChildNodes().getLength() > 0) {
+            NodeList nl = doc.getDocumentElement().getChildNodes();
+            for(int i = 0; i < nl.getLength(); i++) {
+                Node node = nl.item(i);
+                switch(node.getNodeType()) {
+                    case Node.ELEMENT_NODE:
+                        Element e = (Element)node;
+                        System.out.println("<" + e.getTagName() + "/>");
+                        break;
+                    case Node.TEXT_NODE:
+                        Text t = (Text) node;
+                        if(t.getWholeText().isBlank()) break;
+                        System.out.println(t.getWholeText());
+                        break;
+                }
+            }
+        }
+        System.out.println("</" + raiz.getTagName() + ">");
+    }
+    
+    public void mostraContidoFicheiro(Document doc) {
+        try {
+            Document parse = null;
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            parse = db.parse(ruta);
+            DOMSource domS = new DOMSource(parse);
+            StreamResult str = new StreamResult(new StringWriter());
+            TransformerFactory tf = TransformerFactory.newInstance();
+            Transformer t = tf.newTransformer();
+            t.transform(domS, str);
+            String xmlString = str.getWriter().toString();
+            System.out.println(xmlString);
+        } catch(ParserConfigurationException | SAXException | IOException | TransformerException ex) {
+            System.err.println(ex);
+        }
+        
+    }
+    
+    /* EJERCICIO 5 */
+    
+//    public void xeraXMLPedidos() {
+//        XStream xstream = new XStream();
+//        xstream.setMode(XStream.NO_REFERENCES);
+//        xstream.alias("pedidos", List.class);
+//        xstream.alias("pedido", Pedido.class);
+//        xstream.toXML(listaPedidos, fos);
+//    }
     
     
     public static void main(String[] args) throws IOException {
         CrearXMLPedidos cxmlp = new  CrearXMLPedidos();
-        cxmlp.prueba();
+        cxmlp.xeraListaPedidos();
+        cxmlp.crearXMLPedidos();
+        cxmlp.lePedidosXML();
+//        cxmlp.xeraXMLPedidos();
     }
     
 }

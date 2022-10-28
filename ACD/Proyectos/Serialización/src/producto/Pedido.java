@@ -4,7 +4,6 @@
  */
 package producto;
 
-import java.util.ArrayList;
 import java.util.List;
 import serialización.Producto;
 
@@ -24,7 +23,7 @@ public class Pedido {
     public Pedido(int idPedido, String nomeCliente, List<Producto> pr) {
         this.idPedido = idPedido;
         this.nomeCliente = nomeCliente;
-        this.productos = new ArrayList();
+        this.productos = pr;
     }
 
     public int getIdPedido() {
@@ -53,7 +52,7 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Producto{" + "idPedido=" + idPedido + ", nomeCliente=" + nomeCliente + '}';
+        return "Pedido{" + "idPedido=" + idPedido + ", nomeCliente=" + nomeCliente + " productos=" + productos +'}';
     }
     
 }

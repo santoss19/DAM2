@@ -1,1 +1,158 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><pedidos/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pedidos>
+    <pedido>
+        <idPedido>1</idPedido>
+        <nomeCliente>Test</nomeCliente>
+        <productos>
+            <producto numeroProducto="0">
+                <idProducto>1</idProducto>
+                <descripcion>Mango</descripcion>
+                <prezo>1.24</prezo>
+            </producto>
+            <producto numeroProducto="1">
+                <idProducto>2</idProducto>
+                <descripcion>Pera</descripcion>
+                <prezo>1.89</prezo>
+            </producto>
+            <producto numeroProducto="2">
+                <idProducto>3</idProducto>
+                <descripcion>Melocotón</descripcion>
+                <prezo>0.9</prezo>
+            </producto>
+            <producto numeroProducto="3">
+                <idProducto>4</idProducto>
+                <descripcion>Fresa</descripcion>
+                <prezo>2.3</prezo>
+            </producto>
+            <producto numeroProducto="4">
+                <idProducto>5</idProducto>
+                <descripcion>Kiwi</descripcion>
+                <prezo>2.1</prezo>
+            </producto>
+        </productos>
+    </pedido>
+    <pedido>
+        <idPedido>2</idPedido>
+        <nomeCliente>Test</nomeCliente>
+        <productos>
+            <producto numeroProducto="0">
+                <idProducto>1</idProducto>
+                <descripcion>Mango</descripcion>
+                <prezo>1.24</prezo>
+            </producto>
+            <producto numeroProducto="1">
+                <idProducto>2</idProducto>
+                <descripcion>Pera</descripcion>
+                <prezo>1.89</prezo>
+            </producto>
+            <producto numeroProducto="2">
+                <idProducto>3</idProducto>
+                <descripcion>Melocotón</descripcion>
+                <prezo>0.9</prezo>
+            </producto>
+            <producto numeroProducto="3">
+                <idProducto>4</idProducto>
+                <descripcion>Fresa</descripcion>
+                <prezo>2.3</prezo>
+            </producto>
+            <producto numeroProducto="4">
+                <idProducto>5</idProducto>
+                <descripcion>Kiwi</descripcion>
+                <prezo>2.1</prezo>
+            </producto>
+        </productos>
+    </pedido>
+    <pedido>
+        <idPedido>3</idPedido>
+        <nomeCliente>Test</nomeCliente>
+        <productos>
+            <producto numeroProducto="0">
+                <idProducto>1</idProducto>
+                <descripcion>Mango</descripcion>
+                <prezo>1.24</prezo>
+            </producto>
+            <producto numeroProducto="1">
+                <idProducto>2</idProducto>
+                <descripcion>Pera</descripcion>
+                <prezo>1.89</prezo>
+            </producto>
+            <producto numeroProducto="2">
+                <idProducto>3</idProducto>
+                <descripcion>Melocotón</descripcion>
+                <prezo>0.9</prezo>
+            </producto>
+            <producto numeroProducto="3">
+                <idProducto>4</idProducto>
+                <descripcion>Fresa</descripcion>
+                <prezo>2.3</prezo>
+            </producto>
+            <producto numeroProducto="4">
+                <idProducto>5</idProducto>
+                <descripcion>Kiwi</descripcion>
+                <prezo>2.1</prezo>
+            </producto>
+        </productos>
+    </pedido>
+    <pedido>
+        <idPedido>4</idPedido>
+        <nomeCliente>Test</nomeCliente>
+        <productos>
+            <producto numeroProducto="0">
+                <idProducto>1</idProducto>
+                <descripcion>Mango</descripcion>
+                <prezo>1.24</prezo>
+            </producto>
+            <producto numeroProducto="1">
+                <idProducto>2</idProducto>
+                <descripcion>Pera</descripcion>
+                <prezo>1.89</prezo>
+            </producto>
+            <producto numeroProducto="2">
+                <idProducto>3</idProducto>
+                <descripcion>Melocotón</descripcion>
+                <prezo>0.9</prezo>
+            </producto>
+            <producto numeroProducto="3">
+                <idProducto>4</idProducto>
+                <descripcion>Fresa</descripcion>
+                <prezo>2.3</prezo>
+            </producto>
+            <producto numeroProducto="4">
+                <idProducto>5</idProducto>
+                <descripcion>Kiwi</descripcion>
+                <prezo>2.1</prezo>
+            </producto>
+        </productos>
+    </pedido>
+    <pedido>
+        <idPedido>5</idPedido>
+        <nomeCliente>Test</nomeCliente>
+        <productos>
+            <producto numeroProducto="0">
+                <idProducto>1</idProducto>
+                <descripcion>Mango</descripcion>
+                <prezo>1.24</prezo>
+            </producto>
+            <producto numeroProducto="1">
+                <idProducto>2</idProducto>
+                <descripcion>Pera</descripcion>
+                <prezo>1.89</prezo>
+            </producto>
+            <producto numeroProducto="2">
+                <idProducto>3</idProducto>
+                <descripcion>Melocotón</descripcion>
+                <prezo>0.9</prezo>
+            </producto>
+            <producto numeroProducto="3">
+                <idProducto>4</idProducto>
+                <descripcion>Fresa</descripcion>
+                <prezo>2.3</prezo>
+            </producto>
+            <producto numeroProducto="4">
+                <idProducto>5</idProducto>
+                <descripcion>Kiwi</descripcion>
+                <prezo>2.1</prezo>
+            </producto>
+        </productos>
+    </pedido>
+</pedidos>
