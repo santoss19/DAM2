@@ -42,10 +42,11 @@ public class UtilidadesXML {
         return doc;
     }
     
-    public void creaElementoTexto(String nomeEtiqueta, String texto, Document doc) {
+    public Element creaElementoTexto(String nomeEtiqueta, String texto, Document doc) {
         Element el = doc.createElement(nomeEtiqueta);
         el.setTextContent(texto);
         el.appendChild(doc.getDocumentElement());
+        return el;
     }
     
     public Document XMLaDOM(String ruta) {
