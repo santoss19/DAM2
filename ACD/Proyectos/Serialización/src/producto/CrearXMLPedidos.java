@@ -49,15 +49,15 @@ public class CrearXMLPedidos {
     FileOutputStream fos = null;
     
     public CrearXMLPedidos() throws IOException {
-        try {
-            this.fis = new FileInputStream(arch);
-            this.fos = new FileOutputStream(arch);
-        } catch(FileNotFoundException ex) {
-            System.err.println("ERROR: Archivo no encontrado!");
-        }
+        //try {
+            //this.fis = new FileInputStream(arch);
+            //this.fos = new FileOutputStream(arch);
+        //} catch(FileNotFoundException ex) {
+            //System.err.println("ERROR: Archivo no encontrado!");
+        //}
         
-        this.oos = new ObjectOutputStream(fos);
-        this.ois = new ObjectInputStream(fis);
+        //this.oos = new ObjectOutputStream(fos);
+        //this.ois = new ObjectInputStream(fis);
         listaPedidos = new ArrayList<>();
     }
     
@@ -163,33 +163,33 @@ public class CrearXMLPedidos {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             doc = db.parse(ruta);
-            mostraContidoFicheiro(doc);
+            mostraContidoFicheiroNodo(doc.getDocumentElement());
         } catch(ParserConfigurationException | SAXException ex) {
             System.err.println("ERROR: " + ex);
         }
     }
     
-    public void mostraContidoFicheiroNodo(Document doc) {
-        Element raiz = doc.getDocumentElement();
-        System.out.println("<" + raiz.getTagName() + ">");
-        if(doc.getDocumentElement().getChildNodes().getLength() > 0) {
-            NodeList nl = doc.getDocumentElement().getChildNodes();
-            for(int i = 0; i < nl.getLength(); i++) {
-                Node node = nl.item(i);
-                switch(node.getNodeType()) {
-                    case Node.ELEMENT_NODE:
-                        Element e = (Element)node;
-                        System.out.println("<" + e.getTagName() + "/>");
-                        break;
-                    case Node.TEXT_NODE:
-                        Text t = (Text) node;
-                        if(t.getWholeText().isBlank()) break;
-                        System.out.println(t.getWholeText());
-                        break;
+    public void mostraContidoFicheiroNodo(Node nodo) throws IOException {
+        switch (nodo.getNodeType()) {
+            case Node.TEXT_NODE:
+                if(nodo.getNodeValue().toString().isBlank() == false && nodo.getNodeValue().toString().isEmpty() == false) {
+                    System.out.println("<" + nodo.getNodeName() + "> " + nodo.getNodeValue() + "<" + nodo.getNodeName() + "/>");
                 }
-            }
+                break;
+            case Node.ELEMENT_NODE:
+                System.out.println("<" + nodo.getNodeName() + ">");
+                if(nodo.getChildNodes().getLength() > 0) {
+                    for(int i = 0; i < nodo.getChildNodes().getLength(); i++) {
+                        mostraContidoFicheiroNodo(nodo.getChildNodes().item(i));
+                    }
+                }
+                System.out.println("<" + nodo.getNodeName() + "/>");
+                break;
+            default:
+                throw new AssertionError();
         }
-        System.out.println("</" + raiz.getTagName() + ">");
+     
+               
     }
     
     public void mostraContidoFicheiro(Document doc) {
@@ -224,10 +224,10 @@ public class CrearXMLPedidos {
     
     public static void main(String[] args) throws IOException {
         CrearXMLPedidos cxmlp = new  CrearXMLPedidos();
-        cxmlp.xeraListaPedidos();
-        cxmlp.crearXMLPedidos();
-        cxmlp.lePedidosXML();
-//        cxmlp.xeraXMLPedidos();
+        //cxmlp.xeraListaPedidos();
+        //cxmlp.crearXMLPedidos();
+        //cxmlp.lePedidosXML();
+        //cxmlp.xeraXMLPedidos();
     }
     
 }

@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.FocusListener;
+import java.awt.event.FocusEvent;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -14,11 +14,43 @@ import vista.WindDesign;
 
 public class VentanaEjecución {
 
+    public boolean comprobaLetras(JTextField texto) { //Comproba se hai letras no String que devolve o TextField
+        String cadena = texto.getText();
+        for(int j = 0; j < cadena.length(); j++) {
+            char letra = cadena.charAt(j);
+            if((char)letra > 'A' && (char)letra < 'z') {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void ventExec() {
         WindDesign wd = new WindDesign();
         JTextField[] texts = wd.getTexts();
         JButton[] buttons = wd.getBotones();
         JScrollBar[] scrollBars = wd.getScrollBars();
+
+        //Debug inicio (Setea as barras e os textos cos valores RGB do fondo default)//
+
+        int r = wd.getPanelC().getBackground().getRed();
+        int g = wd.getPanelC().getBackground().getGreen();
+        int b = wd.getPanelC().getBackground().getBlue();
+
+        for(int p=0; p < texts.length;p++) {
+            if(p == 0) {
+                texts[p].setText(r + "");
+                scrollBars[p].setValue(r);
+            } else if(p==1) {
+                texts[p].setText(g + "");
+                scrollBars[p].setValue(g);
+            } else if(p==2) {
+                texts[p].setText(g + "");
+                scrollBars[p].setValue(g);
+            }
+        }
+
+        //
 
         for(int i = 0; i < buttons.length; i++) {
             JButton but = buttons[i];
@@ -70,11 +102,25 @@ public class VentanaEjecución {
             JTextField text = texts[k];
             Container panel = wd.getPanelC();
             if(k == 0) {
-                text.addKeyListener(new KeyListener() {
+                text.addFocusListener(new FocusListener() {
                     @Override
-                    public void keyPressed(KeyEvent e) {
-                        if(e.getKeyChar() == e.VK_ENTER) {
-                            if(Integer.parseInt(text.getText()) > 255) {
+                    public void focusGained(FocusEvent e) {}
+                    
+                    @Override
+                    public void focusLost(FocusEvent e) {
+                        int num = 0;
+                        if(comprobaLetras(text) == true) {
+                            JDialog dia = new JDialog();
+                            JLabel label = new JLabel("No puedes introducir letras");
+                            dia.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                            dia.setSize(310,100);
+                            label.setAlignmentX(SwingConstants.CENTER);
+                            dia.add(label);
+                            dia.setVisible(true);
+                            text.setText("0");
+                        } else {
+                            if(text.getText().isEmpty() != true) num = Integer.parseInt(text.getText());
+                            if(num > 255) {
                                 JDialog dia = new JDialog();
                                 JLabel label = new JLabel("No puedes introducir un valor más grande que 255");
                                 dia.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -84,23 +130,33 @@ public class VentanaEjecución {
                                 dia.setVisible(true);
                                 text.setText("0");
                             } else {
-                                panel.setBackground(new Color(Integer.parseInt(text.getText()), panel.getBackground().getGreen(), panel.getBackground().getBlue()));
-                                scrollBars[0].setValue(Integer.parseInt(text.getText()));
+                                panel.setBackground(new Color(num, panel.getBackground().getGreen(), panel.getBackground().getBlue()));
+                                scrollBars[0].setValue(num);
+                                text.setText(num + "");
                             }
                         }
                     }
-    
-                    @Override
-                    public void keyReleased(KeyEvent e) {}
-                    @Override
-                    public void keyTyped(KeyEvent e) {}
                 });
             } else if(k == 1) {
-                text.addKeyListener(new KeyListener() {
+                text.addFocusListener(new FocusListener() {
                     @Override
-                    public void keyPressed(KeyEvent e) {
-                        if(e.getKeyChar() == e.VK_ENTER) {
-                            if(Integer.parseInt(text.getText()) > 255) {
+                    public void focusGained(FocusEvent e) {}
+                    
+                    @Override
+                    public void focusLost(FocusEvent e) {
+                        int num = 0;
+                        if(comprobaLetras(text) == true) {
+                            JDialog dia = new JDialog();
+                            JLabel label = new JLabel("No puedes introducir letras");
+                            dia.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                            dia.setSize(310,100);
+                            label.setAlignmentX(SwingConstants.CENTER);
+                            dia.add(label);
+                            dia.setVisible(true);
+                            text.setText("0");
+                        } else {
+                            if(text.getText().isEmpty() != true) num = Integer.parseInt(text.getText());
+                            if(num > 255) {
                                 JDialog dia = new JDialog();
                                 JLabel label = new JLabel("No puedes introducir un valor más grande que 255");
                                 dia.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -110,23 +166,33 @@ public class VentanaEjecución {
                                 dia.setVisible(true);
                                 text.setText("0");
                             } else {
-                                panel.setBackground(new Color(panel.getBackground().getRed(), Integer.parseInt(text.getText()), panel.getBackground().getBlue()));
-                                scrollBars[1].setValue(Integer.parseInt(text.getText()));
+                                panel.setBackground(new Color(panel.getBackground().getRed(), num, panel.getBackground().getBlue()));
+                                scrollBars[1].setValue(num);
+                                text.setText(num + "");
                             }
                         }
                     }
-    
-                    @Override
-                    public void keyReleased(KeyEvent e) {}
-                    @Override
-                    public void keyTyped(KeyEvent e) {}
                 });
             } else if(k == 2) {
-                text.addKeyListener(new KeyListener() {
+                text.addFocusListener(new FocusListener() {
                     @Override
-                    public void keyPressed(KeyEvent e) {
-                        if(e.getKeyChar() == e.VK_ENTER) {
-                            if(Integer.parseInt(text.getText()) > 255) {
+                    public void focusGained(FocusEvent e) {}
+                    
+                    @Override
+                    public void focusLost(FocusEvent e) {
+                        int num = 0;
+                        if(comprobaLetras(text) == true) {
+                            JDialog dia = new JDialog();
+                            JLabel label = new JLabel("No puedes introducir letras");
+                            dia.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                            dia.setSize(310,100);
+                            label.setAlignmentX(SwingConstants.CENTER);
+                            dia.add(label);
+                            dia.setVisible(true);
+                            text.setText("0");
+                        } else {
+                            if(text.getText().isEmpty() != true) num = Integer.parseInt(text.getText());
+                            if(num > 255) {
                                 JDialog dia = new JDialog();
                                 JLabel label = new JLabel("No puedes introducir un valor más grande que 255");
                                 dia.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -136,16 +202,12 @@ public class VentanaEjecución {
                                 dia.setVisible(true);
                                 text.setText("0");
                             } else {
-                                panel.setBackground(new Color(panel.getBackground().getRed(), panel.getBackground().getGreen(), Integer.parseInt(text.getText())));
-                                scrollBars[2].setValue(Integer.parseInt(text.getText()));
+                                panel.setBackground(new Color(panel.getBackground().getRed(),panel.getBackground().getGreen(), num));
+                                scrollBars[2].setValue(num);
+                                text.setText(num + "");
                             }
                         }
                     }
-    
-                    @Override
-                    public void keyReleased(KeyEvent e) {}
-                    @Override
-                    public void keyTyped(KeyEvent e) {}
                 });
             }
         }

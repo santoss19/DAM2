@@ -10,7 +10,7 @@ public class WindExec {
         WindDesign wd = new WindDesign();
 
         wd.getTexto().addKeyListener(new KeyListener() { // KeyListener para que cando se pulsa a tecla ENTER copie a frase no Label
-            @Override
+            @Override 
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyChar() == e.VK_ENTER) {
                     wd.getFrase().setText(wd.getTexto().getText());
