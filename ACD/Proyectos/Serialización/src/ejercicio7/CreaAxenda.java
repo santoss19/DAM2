@@ -4,7 +4,7 @@
  */
 
 package ejercicio7;
-import ejercicio5.utilidades.UtilidadesXML;
+import ejercicio6.UtilidadesXML;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -35,7 +35,7 @@ public class CreaAxenda {
             //Creacion do elemento nuTelefono
             Element nuTelefono = doc.createElement("nuTelefono");
             nuTelefono.setTextContent(nTelefono[i]);
-            nuTelefono.appendChild(el);
+            el.appendChild(nuTelefono);
             //
             //Creacion do elemento enderezo
             Element enderezo = doc.createElement("enderezo");

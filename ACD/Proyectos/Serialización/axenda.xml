@@ -1,10 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<axenda>
-    <contacto>
-        <nome>Rodrigo</nome>
-        <enderezo>
-            <rua>C/Torres Caidas</rua>
-            <numero>1</numero>
-        </enderezo>
-    </contacto>
-    <contacto><nome>Oscar</nome><enderezo><rua>C/César Rodríguez Dorado</rua><numero>2</numero></enderezo></contacto><contacto><nome>Luis</nome><enderezo><rua>C/Avenida Gonzalo</rua><numero>3</numero></enderezo></contacto><contacto><nome>Alvaro</nome><enderezo><rua>C/Avenida General</rua><numero>4</numero></enderezo></contacto><contacto><nome>Antonio</nome><enderezo><rua>C/Google</rua><numero>5</numero></enderezo></contacto><contacto><nome>Manolo</nome><enderezo><rua>C/Acceso a Datos</rua><numero>6</numero></enderezo></contacto></axenda>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><axenda><contacto><nome>Rodrigo</nome><nuTelefono>678987612</nuTelefono><enderezo><rua>C/Torres Caidas</rua><numero>1</numero></enderezo></contacto><contacto><nome>Oscar</nome><nuTelefono>678091278</nuTelefono><enderezo><rua>C/César Rodríguez Dorado</rua><numero>2</numero></enderezo></contacto><contacto><nome>Luis</nome><nuTelefono>692345678</nuTelefono><enderezo><rua>C/Avenida Gonzalo</rua><numero>3</numero></enderezo></contacto><contacto><nome>Alvaro</nome><nuTelefono>698123098</nuTelefono><enderezo><rua>C/Avenida General</rua><numero>4</numero></enderezo></contacto><contacto><nome>Antonio</nome><nuTelefono>612345678</nuTelefono><enderezo><rua>C/Google</rua><numero>5</numero></enderezo></contacto><contacto><nome>Manolo</nome><nuTelefono>673123456</nuTelefono><enderezo><rua>C/Acceso a Datos</rua><numero>6</numero></enderezo></contacto></axenda>
