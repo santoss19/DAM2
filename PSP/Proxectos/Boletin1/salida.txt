@@ -1,19 +1,18 @@
-public void borraElementosEtiqueta(String nomeEtiqueta, Document doc) {
-        NodeList nl = doc.getDocumentElement().getChildNodes();
-        for(int i = 0; i < nl.getLength(); i++) {
-            NodeList hs = nl.item(i).getChildNodes();
-            for(int j = 0; j < hs.getLength(); j++) {
-                if(hs.item(j).getNodeName().equals("nome")) {
-                    Node p = hs.item(j).getParentNode();
-                    NodeList phs = p.getChildNodes();
-                    for(int k = 0; k < phs.getLength(); k++) {
-                        if(phs.item(k).getNodeName().equals("nome")) {
-                            Node br = phs.item(k);
-                            p.removeChild(br);
-                        }
-                    }
-                }
-            }
-        }
-        DOMaXML("contactos.xml", doc);
-    }
+ El volumen de la unidad I es HUGO-M.2
+ El n£mero de serie del volumen es: 3EA8-56B5
+
+ Directorio de I:\DAM2\RepoGitHub\DAM2\PSP\Proxectos\Boletin1
+
+25/10/2022  07:40    <DIR>          .
+25/10/2022  07:40    <DIR>          ..
+25/10/2022  07:40               232 .classpath
+26/10/2022  07:23               691 .project
+19/10/2022  12:29    <DIR>          .vscode
+29/11/2022  08:38    <DIR>          bin
+29/11/2022  08:40                 0 err.txt
+19/10/2022  12:29    <DIR>          lib
+21/09/2022  07:53               708 README.md
+29/11/2022  08:40                 0 salida.txt
+19/10/2022  12:30    <DIR>          src
+               5 archivos          1.631 bytes
+               6 dirs  107.211.063.296 bytes libres

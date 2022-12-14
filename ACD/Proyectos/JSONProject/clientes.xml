@@ -1,0 +1,45 @@
+<clientes>
+  <clientes>
+    <cliente>
+      <dni>11111111K</dni>
+      <nome>Alvaro</nome>
+      <apelidos>Regueira Queimado</apelidos>
+      <enderezos>
+        <enderezo>
+          <rua>C/Fantasias Sexuales</rua>
+          <numero>1</numero>
+          <cp>15960</cp>
+        </enderezo>
+        <enderezo>
+          <rua>C/Fantasias Sexuales</rua>
+          <numero>2</numero>
+          <cp>15960</cp>
+        </enderezo>
+      </enderezos>
+    </cliente>
+    <cliente>
+      <dni>22222222F</dni>
+      <nome>Luis</nome>
+      <apelidos>Lustres García</apelidos>
+      <enderezos>
+        <enderezo>
+          <rua>C/Fantasias Sexuales</rua>
+          <numero>2</numero>
+          <cp>15960</cp>
+        </enderezo>
+      </enderezos>
+    </cliente>
+    <cliente>
+      <dni>33333333H</dni>
+      <nome>Oscar</nome>
+      <apelidos>Torres Tachanka</apelidos>
+      <enderezos>
+        <enderezo>
+          <rua>C/Fantasias Sexuales</rua>
+          <numero>3</numero>
+          <cp>15960</cp>
+        </enderezo>
+      </enderezos>
+    </cliente>
+  </clientes>
+</clientes>

@@ -9,19 +9,21 @@ public class Aleatorios {
         InputStreamReader isr = new InputStreamReader(System.in); //InputStreamReader del sistema
         BufferedReader br = new BufferedReader(isr); //Buffer del Sistema
         String cadena = "";
+        Process p = null;
 
         try {
             System.out.print("Introduzca una linea: ");
             cadena = br.readLine();
             while(!cadena.equals("fin")) {
                 System.out.println("Sigue leyendo");
-                Process p = r.exec("java src/AleatorioHijo.java"); // Importante poner SRC/ delante del nombre del archivo
+                p = r.exec("java src/AleatorioHijo.java"); // Importante poner SRC/ delante del nombre del archivo
                 InputStream ip = p.getInputStream(); // InputStream del Proceso
                 BufferedReader bf = new BufferedReader(new InputStreamReader(ip)); //Buffer del proceso
                 System.out.println(bf.readLine());
                 System.out.print("Introduzca una linea: ");
                 cadena = br.readLine();
             }
+            System.out.println("Estatus de término: " + p.exitValue());
         } catch(IOException ex) {
             System.out.println("ERROR:" + ex);
             System.exit(-1);

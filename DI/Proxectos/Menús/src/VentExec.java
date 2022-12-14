@@ -2,6 +2,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.net.http.WebSocket.Listener;
 
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+
 import vista.Ventana;
 
 public class VentExec {
@@ -51,6 +54,14 @@ public class VentExec {
 
         vent.getMon().addItemListener(listener -> {
             vent.getText().setFont(new Font(Font.MONOSPACED, vent.getText().getFont().getStyle(), vent.getText().getFont().getSize()));
+        });
+
+        vent.getItemNuevo().addActionListener(listener -> {
+            JDialog dia = new JDialog();
+            dia.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+            dia.setSize(200,200);
+            dia.add(new JLabel("Esto es una ventana"));
+            dia.setVisible(true);
         });
 
     }
